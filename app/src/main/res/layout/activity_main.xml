@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/loginContainer"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:background="#FFFFFF">
+
+    <TextView
+            android:id="@+id/etCompanyId"
+            android:layout_width="320dp"
+            android:layout_height="31dp"
+            android:layout_marginTop="226dp"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:paddingEnd="14dp"
+            android:textColor="#333333"
+            android:textSize="23sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+            android:id="@+id/etUserID"
+            style="@style/SignEditText"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:hint="User ID"
+            android:inputType="textPersonName"
+            android:padding="2dp"
+            android:textColor="#222222"
+            android:textSize="23sp"
+            app:layout_constraintStart_toStartOf="@+id/etCompanyId"
+            app:layout_constraintTop_toBottomOf="@+id/etCompanyId" />
+
+    <EditText
+            android:id="@+id/etPassword"
+            style="@style/SignEditText"
+            android:layout_marginTop="13dp"
+            android:ems="10"
+            android:hint="password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:textColor="#222222"
+            android:textSize="23sp"
+            app:layout_constraintStart_toStartOf="@+id/etUserID"
+            app:layout_constraintTop_toBottomOf="@+id/etUserID" />
+
+    <Button
+            android:id="@+id/btnLogin"
+            style="@style/SageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:enabled="false"
+            android:maxLines="1"
+            android:minWidth="107dp"
+            android:text="@string/sign_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+
+</android.support.constraint.ConstraintLayout>

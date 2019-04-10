@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="SignEditText" parent="android:Widget.EditText">
+        <item name="android:layout_width">320dp</item>
+        <item name="android:layout_height">46dp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">14dp</item>
+        <item name="android:background">@drawable/selector_edittext_round_corner_background</item>
+        <item name="android:textColorHint">#4D222222</item>
+    </style>
+
+    <style name="SageButton" parent="android:Widget.Button">
+        <item name="android:background">@drawable/selector_sage_btn</item>
+        <item name="android:minWidth">102dp</item>
+        <item name="android:textSize">23dp</item>
+        <item name="android:textColor">@drawable/selector_button_primary_text</item>
+    </style>
+</resources>
