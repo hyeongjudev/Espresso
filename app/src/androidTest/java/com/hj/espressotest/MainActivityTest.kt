@@ -19,15 +19,18 @@ import org.junit.runner.RunWith
 import android.support.test.InstrumentationRegistry.getTargetContext
 import android.content.ComponentName
 import android.content.Intent
+import android.support.test.espresso.action.ViewActions.closeSoftKeyboard
 import android.support.test.espresso.intent.Intents
-
-
-
 
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class MainActivityTest {
+
+    @get:Rule
+    val rule = ActivityTestRule(MainActivity::class.java)
+
+
     companion object {
         private const val CORRECT_ID = "link"
         private const val CORRECT_PASSWORD = "SamsungDev1!"
@@ -35,10 +38,6 @@ class MainActivityTest {
         private const val INVALID_ID = "link2"
         private const val INVALID_PASSWORD = "HPDev1!"
     }
-
-    @get:Rule
-    val rule = ActivityTestRule(MainActivity::class.java)
-    val intentRule = IntentsTestRule(MainActivity::class.java)
 
 
     @Test
@@ -48,22 +47,22 @@ class MainActivityTest {
 
     @Test
     fun button_Disable_Test2() {
-        onView(withId(R.id.etUserID)).perform(ViewActions.typeText(CORRECT_ID))
+        onView(withId(R.id.etUserID)).perform(ViewActions.typeText(CORRECT_ID), closeSoftKeyboard())
         onView(withId(R.id.btnLogin)).check(matches(not(isEnabled())))
     }
 
     @Test
     fun button_Disable_Test3() {
-        onView(withId(R.id.etUserID)).perform(ViewActions.typeText(CORRECT_ID))
-        onView(withId(R.id.etPassword)).perform(ViewActions.typeText(CORRECT_PASSWORD))
+        onView(withId(R.id.etUserID)).perform(ViewActions.typeText(CORRECT_ID), closeSoftKeyboard())
+        onView(withId(R.id.etPassword)).perform(ViewActions.typeText(CORRECT_PASSWORD), closeSoftKeyboard())
         onView(withId(R.id.btnLogin)).check(matches((isEnabled())))
     }
 
 
     @Test
     fun  correctLogin() {
-        onView(withId(R.id.etUserID)).perform(ViewActions.typeText(CORRECT_ID))
-        onView(withId(R.id.etPassword)).perform(ViewActions.typeText(CORRECT_PASSWORD))
+        onView(withId(R.id.etUserID)).perform(ViewActions.typeText(CORRECT_ID), closeSoftKeyboard())
+        onView(withId(R.id.etPassword)).perform(ViewActions.typeText(CORRECT_PASSWORD), closeSoftKeyboard())
 
         Intents.init()
         onView(withId(R.id.btnLogin)).perform(click())
@@ -74,8 +73,8 @@ class MainActivityTest {
 
     @Test
     fun  invalidLogin() {
-        onView(withId(R.id.etUserID)).perform(ViewActions.typeText(INVALID_ID))
-        onView(withId(R.id.etPassword)).perform(ViewActions.typeText(INVALID_PASSWORD))
+        onView(withId(R.id.etUserID)).perform(ViewActions.typeText(INVALID_ID), closeSoftKeyboard())
+        onView(withId(R.id.etPassword)).perform(ViewActions.typeText(INVALID_PASSWORD), closeSoftKeyboard())
 
         onView(withId(R.id.btnLogin)).perform(click())
         onView(withText("Login Fail")).inRoot(withDecorView(not(rule.activity.window.decorView))).check(matches(isDisplayed()))
